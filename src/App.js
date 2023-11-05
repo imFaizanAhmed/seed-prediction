@@ -27,7 +27,7 @@ function App() {
           Seed Schemes
         </div>
       </div>
-      <div className="desc">
+      <div className="desc" style={{background: "antiquewhite"}}>
         <div className="sub-desc">
           Unlock the secrets of successful gardening with our app. Simply enter
           your location, and we'll recommend the perfect seeds for your soil and

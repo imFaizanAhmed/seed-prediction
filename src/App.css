@@ -55,3 +55,34 @@
 .sub-desc {
   width: 60vw;
 }
+
+.row {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+}
+
+.column {
+  padding: 16px;
+  height: 250px;
+}
+
+.formik-field {
+  width: 100% !important;
+}
+
+.formik-submit {
+  width: 100% !important;
+  padding: 16px;
+  grid-column: 1/3;
+  display: flex;
+  justify-content: center;
+}
