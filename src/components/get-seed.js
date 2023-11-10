@@ -56,8 +56,8 @@ export default function GetSeeds() {
         noValidate
         autoComplete="off"
       >
-        {currentPage == 0 && <SeedsForm setData={setData} setCurrentPage={setCurrentPage} />}
-        {currentPage == 1 && <ShowResult data={data} setCurrentPage={setCurrentPage}/>}
+        {currentPage === 0 && <SeedsForm setData={setData} setCurrentPage={setCurrentPage} />}
+        {currentPage === 1 && <ShowResult data={data} setCurrentPage={setCurrentPage}/>}
       </Box>
     </>
   );
