@@ -9,6 +9,7 @@ import {
   Button,
   CircularProgress,
 } from "@mui/material";
+import axios from "axios";
 
 export default function SeedsForm({ setData, setCurrentPage }) {
   const [isLoading, toggleLoading] = useState(false);
@@ -21,9 +22,6 @@ export default function SeedsForm({ setData, setCurrentPage }) {
         rainfall: "",
         humidityRate: "",
         soilType: "",
-      }}
-      onSubmit={(values) => {
-        console.log(values);
       }}
     >
       {({ values, handleChange }) => (
@@ -93,18 +91,20 @@ export default function SeedsForm({ setData, setCurrentPage }) {
           <div className="formik-submit">
             <Button
               variant="contained"
-              onClick={() => {
+              onClick={async () => {
                 toggleLoading(true);
-                console.log("values", values);
 
-                setTimeout(() => {
-                  setData({
-                    seedName: "Dummy Seed",
-                    plantName: "Dummy Plant",
-                  });
-                  setCurrentPage(1);
-                  toggleLoading(false);
-                }, 3000);
+                const resp = await axios.post(
+                  "http://localhost:5000/predict",
+                  values
+                );
+
+                setData({
+                  seedName: resp.data.seedName,
+                  plantName: resp.data.plantName,
+                });
+                setCurrentPage(1);
+                toggleLoading(false);
               }}
               style={{ width: 200, display: "flex", gap: 8 }}
             >
